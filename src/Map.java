@@ -15,6 +15,7 @@ public class Map{
         mp_size = new vec2(Integer.parseInt(map_info[1]), Integer.parseInt(map_info[2]));
 
         mp_tiles = new Tiles[(int)mp_size.x][(int)mp_size.y];
+        mp_name = map_info[0];
 
         for(int i = 0; i < mp_size.y; i++){
             String[] line = fp.readLine().split(",", -1);
