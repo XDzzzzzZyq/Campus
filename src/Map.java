@@ -22,7 +22,7 @@ public class Map extends Const{
             assert line.length == mp_size.x;
 
             for(int j = 0; j < mp_size.x; j++){
-                mp_tiles[j][i] = new Tiles(Tiles.ParseType(Integer.parseInt(line[j])));
+                mp_tiles[j][i] = new Tiles(Tiles.ParseType(Integer.parseInt(line[j])));     
             }
         }
     }
@@ -41,7 +41,7 @@ public class Map extends Const{
 
     public void RenderMap(vec2 _min, vec2 _max){
         for(int i = (int)_min.x; i<_max.x; i++){
-            for(int j = (int)_min.x; j<_max.x; j++){
+            for(int j = (int)_min.y; j<_max.y; j++){
                 mp_tiles[i][j].RenderTile();
             }
         }
@@ -51,15 +51,18 @@ public class Map extends Const{
 
         testmap.ReadCSV(args[0]);
         testmap.Debug();
+
+        System.out.println(testmap.GetTileTypes(0, 1).GetCode());
     }
 
     public void Debug(){
         System.out.println("map name: "+mp_name);
         System.out.println("size: "+mp_size);
         System.out.println("offset: "+mp_offset);
-        for(Tiles[] l : mp_tiles){
-            for(Tiles t : l){
-                t.Debug(true);
+
+        for(int y = 0; y<mp_tiles[0].length; y++){
+            for(int x = 0; x<mp_tiles.length; x++){
+                mp_tiles[x][y].Debug(false);
                 System.out.print(" ");
             }
             System.out.println();

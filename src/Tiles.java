@@ -5,10 +5,13 @@ public class Tiles{
      */
 
     public enum TileTypes{
-        TILE_NONE(0, "None"), 
-        TILE_GRAS(1, "Gras"), 
-        TILE_LAKE(2, "Lake"), 
-        TILE_ROOF(3, "Roof");
+        TILE_ROAD(0, "Road"),
+        TILE_NONE(1, "None"), 
+        TILE_ROOF(2, "Roof"), 
+        TILE_ENTR(3, "Entr"),
+        TILE_GRAS(4, "Gras"), 
+        TILE_LAKE(5, "Lake"), 
+        TILE_FIEL(6, "Fiel");
 
         TileTypes(int _code, String _name){
             this._code = _code;
@@ -25,7 +28,11 @@ public class Tiles{
     public static final TileTypes TILE_NONE = TileTypes.TILE_NONE;
     public static final TileTypes TILE_GRAS = TileTypes.TILE_GRAS;
     public static final TileTypes TILE_LAKE = TileTypes.TILE_LAKE;
+    public static final TileTypes TILE_ROAD = TileTypes.TILE_ROAD;
+    public static final TileTypes TILE_ENTR = TileTypes.TILE_ENTR;
+    public static final TileTypes TILE_FIEL = TileTypes.TILE_FIEL;
     public static final TileTypes TILE_ROOF = TileTypes.TILE_ROOF;
+
 
     /*
      *  Instance variables & methods
@@ -67,11 +74,13 @@ public class Tiles{
         // parse integer from csv file
         // for adaptbility
         switch(_inp){
-            case 0: return TILE_NONE;
-            case 1: return TILE_GRAS;
-            case 2: return TILE_LAKE;
-            case 3: return TILE_ROOF;
-            case 4: return TILE_NONE;
+            case 0 : return TILE_ROAD;
+            case 1 : return TILE_NONE;
+            case 2 : return TILE_ROOF;
+            case 3 : return TILE_ENTR;
+            case 4 : return TILE_GRAS;
+            case 5 : return TILE_LAKE;
+            case 6 : return TILE_FIEL;
         }
 
         return TILE_NONE;
