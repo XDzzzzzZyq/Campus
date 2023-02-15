@@ -1,4 +1,4 @@
-public class Campus{
+public class Campus extends Const{
 
     public static Map[] m_maps;
     public static int m_activa_map = 0;

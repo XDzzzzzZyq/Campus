@@ -1,4 +1,4 @@
-public class Map{
+public class Map extends Const{
 
     private Tiles[][] mp_tiles;
     private vec2 mp_offset = new vec2(0, 0);
