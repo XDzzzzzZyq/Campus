@@ -1,7 +1,5 @@
 //package BK1;
 
-import java.lang.Character.Subset;
-
 public class vec2{
     public double x = 0; 
     public double y = 0;
@@ -153,5 +151,13 @@ public class vec2{
 
     public static double vec2angle(vec2 _a, vec2 _b){
         return Math.asin((_a.x*_b.y - _a.y*_b.x)/length(_a)/length(_b));
+    }
+
+    public static void main(String[] args){
+
+    }
+
+    public String toString(){
+        return "( "+x+", "+y+" )";
     }
 }
