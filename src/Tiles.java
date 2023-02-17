@@ -64,6 +64,15 @@ public class Tiles{
 
     public Tiles(TileTypes _t){
         t_type = _t;
+
+        if(t_type==TILE_ENTR) t_interactable = true;
+
+        switch(t_type){
+            case TILE_LAKE:
+            case TILE_ROOF:
+            case TILE_NONE:
+                t_walkable = false;            
+        }
     }
 
     /*
