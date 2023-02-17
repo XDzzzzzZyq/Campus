@@ -1,3 +1,33 @@
 # Campus
-CS201 BK project #2
----
+CS201 BK project #2  
+   
+### Reminder for development
+- this reminder should be delete after release   
+    <br><br/>
+- the smallest unit of position is 1m
+    - the block of each tile is 1m*1m
+    - the offset of map ```mp_offset``` represents the offset in tiles and also equals to the offest in meters
+    - the size of map ```mp_size``` represents the counts in tiles and also equals to the size in meters
+    <br><br/>
+    - the starting point of map is its left-top corner rather than its center
+    <br><br/>
+    - the positions of player and npcs are also in meters, so there should not be decimals
+      - but as for the animations, it may allows non-integer position exists temporarily   
+    <br><br/>
+- To do list:
+    - [x] map reading [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+    <br><br/>
+    - [ ] map rendering
+      - [ ] multi-map rendering
+      - [ ] adaptive details
+    <br><br/>  
+    - [ ] character rendering
+    <br><br/> 
+    - [ ] key-mouse input
+      - [ ] player movement
+      - [ ] interaction
+        - [ ] time related
+      - [ ] quit/reset
+    <br><br/>
+    - [ ] animation
+  
