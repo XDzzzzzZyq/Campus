@@ -9,10 +9,10 @@ CS201 BK project #2
     - the offset of map ```mp_offset``` represents the offset in tiles and also equals to the offest in meters
     - the size of map ```mp_size``` represents the counts in tiles and also equals to the size in meters
     <br><br/>
-    - the starting point of map is its left-top corner rather than its center
+    - the starting point of map is its left-top corner rather than its center (y axis is inverted)
     <br><br/>
     - the positions of player and npcs are also in meters, so there should not be decimals
-      - but as for the animations, it may allows non-integer position exists temporarily   
+      - but as for the animations, ```p_pos``` may allows non-integer position exists temporarily   
     <br><br/>
 - To do list:
     - [x] map reading [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
@@ -23,11 +23,14 @@ CS201 BK project #2
     <br><br/>  
     - [ ] character rendering
     <br><br/> 
-    - [ ] key-mouse input
+    - [x] key-mouse input [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - Using StdDraw?
       - [ ] player movement
       - [ ] interaction
         - [ ] time related
       - [ ] quit/reset
     <br><br/>
     - [ ] animation
+      - [ ] ease in / ease out
+      - [ ] smooth camera movement
   
