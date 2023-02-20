@@ -6,6 +6,8 @@ public class Map extends Const{
 
     public String mp_name;
 
+    public boolean mp_activated;
+
     /*
      *   Reading map from .csv file
      */

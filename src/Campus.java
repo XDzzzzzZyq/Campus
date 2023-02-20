@@ -28,6 +28,7 @@ public class Campus extends Const{
             m_maps[i] = new Map();
             m_maps[i].ReadCSV(map_names[i]);                    
         }
+        m_maps[0].mp_activated = true;
 
         int defult_time = Integer.parseInt(config.readLine());             if(debug)System.out.println(defult_time);
         m_time = new Timer();
@@ -65,7 +66,7 @@ public class Campus extends Const{
         m_player.Update();
 
         // Render
-        m_maps[m_activa_map].RenderMap();
+        for(Map map : m_maps) if(map.mp_activated) map.RenderMap();
         for(Characters chara : m_characters) chara.Render();
         m_player.Render();
 
