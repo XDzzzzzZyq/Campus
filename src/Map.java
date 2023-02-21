@@ -68,7 +68,7 @@ public class Map extends Const{
     }
 
     public void RenderMap(){
-        
+        RenderMap(new vec2(0, 0), mp_size);
     }
 
     /*
@@ -78,7 +78,7 @@ public class Map extends Const{
     public void RenderMap(vec2 _min, vec2 _max){
         for(int i = (int)_min.x; i<_max.x; i++){
             for(int j = (int)_min.y; j<_max.y; j++){
-                mp_tiles[i][j].RenderTile();
+                // HERE
             }
         }
     }
