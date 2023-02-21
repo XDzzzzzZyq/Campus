@@ -1,5 +1,7 @@
 # Campus
 CS201 BK project #2  
+
+https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
    
 ### Reminder for development
 - this reminder should be delete after release   
