@@ -1,5 +1,7 @@
 # Campus
 CS201 BK project #2  
+
+https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
    
 ### Reminder for development
 - this reminder should be delete after release   
@@ -17,20 +19,21 @@ CS201 BK project #2
 - To do list:
     - [x] map reading [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>
-    - [ ] map rendering
-      - [ ] multi-map rendering
+    - [ ] map rendering [@Najo0116](https://github.com/Najo0116)
+      - [ ] multi-map rendering [@Najo0116](https://github.com/Najo0116)
       - [ ] adaptive details
     <br><br/>  
-    - [ ] character rendering
+    - [ ] character rendering [@Najo0116](https://github.com/Najo0116)
     <br><br/> 
     - [x] key-mouse input [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - Using StdDraw?
-      - [ ] player movement
+      - [ ] player movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [ ] interaction
         - [ ] time related
       - [ ] quit/reset
     <br><br/>
     - [ ] animation
-      - [ ] ease in / ease out
+      - [ ] ease in / ease out [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [ ] smooth camera movement
   
+    - [ ] Textures [@seanpushu](https://github.com/seanpushu)
