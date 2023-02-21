@@ -36,4 +36,4 @@ https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
       - [ ] ease in / ease out [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [ ] smooth camera movement
   
-    - [ ] Textures [@seanpushu](https://github.com/seanpushu)
+    - [ ] Textures [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) [@seanpushu](https://github.com/seanpushu)

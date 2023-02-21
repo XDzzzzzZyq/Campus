@@ -3,3 +3,7 @@
 
 # temp
 [~$]*.*
+
+# zipfile
+*.rar
+*.zip
