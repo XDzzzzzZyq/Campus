@@ -10,7 +10,7 @@ public class Campus extends Const{
     public static Characters[] m_characters;
     public static Player m_player;
 
-    public static boolean debug = true;
+    public static boolean debug = false;
 
     public static void main(String[] args){
         Init(args);
@@ -46,6 +46,8 @@ public class Campus extends Const{
 
             m_characters[i] = new Characters(dir, x, y);        if(debug)System.out.println(m_characters[i].p_pos.toString());
         }
+
+        StdDraw.disableDoubleBuffering();
     }
 
     public static void Update(){
@@ -63,12 +65,20 @@ public class Campus extends Const{
         m_time.NextFrame();
 
         // State Update
-        m_player.Update();
+        boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);
+        m_player.Update(avail_move);
 
         // Render
         for(Map map : m_maps) if(map.mp_activated) map.RenderMap();
         for(Characters chara : m_characters) chara.Render();
         m_player.Render();
+
+        if(debug){ 
+            System.out.println(m_player.p_tar.toString());
+            System.out.println(m_maps[m_activa_map].GetTileTypes(m_player.p_tar).GetName());
+        }
+        StdDraw.pause(30);
+        StdDraw.show();
 
         return true;
     }

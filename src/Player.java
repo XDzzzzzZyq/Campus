@@ -20,27 +20,27 @@ public class Player extends Const {
         p_tar.add(tar);
     }
 
-    public void Update(){
+    public void Update(boolean[] avail_move){
 
         // key - interaction
 
-        if(StdDraw.isKeyPressed(A)) {
+        if(StdDraw.isKeyPressed(A) && avail_move[0]) {
             p_dir = A;
             Move(new vec2(-1, 0));
 
         }
-        if(StdDraw.isKeyPressed(W)) {
+        if(StdDraw.isKeyPressed(W) && avail_move[1]) {
             p_dir = W;
             Move(new vec2(0, -1));
 
         }
-        if(StdDraw.isKeyPressed(D)) {
+        if(StdDraw.isKeyPressed(D) && avail_move[2]) {
             p_dir = D;
             Move(new vec2(1, 0));
 
 
         }
-        if(StdDraw.isKeyPressed(S)) {
+        if(StdDraw.isKeyPressed(S) && avail_move[3]) {
             p_dir = S;
             Move(new vec2(0, 1));
             
