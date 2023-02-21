@@ -34,3 +34,4 @@ CS201 BK project #2
       - [ ] ease in / ease out
       - [ ] smooth camera movement
   
+    - [ ] Textures [@seanpushu](https://github.com/seanpushu)
