@@ -1,13 +1,14 @@
 package main;
 
 import javax.swing.*;
+import java.awt.*;
 
 import character.MainPlayer;
 import main.tiles.TileManager;
 
-import java.awt.*;
 
-public class GUI extends JPanel implements Runnable{
+
+public class Renderer extends JPanel implements Runnable{
 
     //Screen settings
     final int originalTileSize = 16;
@@ -31,7 +32,10 @@ public class GUI extends JPanel implements Runnable{
     //Tile manager
     TileManager tileM = new TileManager(this);
 
-    public GUI() {
+    PlayerOld m_player;
+    Map m_maps[];
+
+    public Renderer() {
 
         //Game panel
         this.addKeyListener(keyH);
@@ -48,30 +52,17 @@ public class GUI extends JPanel implements Runnable{
         gameThread.start();
     }
 
+    public void SetData(PlayerOld pl, Map[] m){
+        m_player = pl;
+        m_maps = m;
+    }
+
     @Override
     public void run() {
-        //Since a nanosecond is 1 billion, at 60 fps, this will give the time need per each update of the screen
-        double drawInterval = 1000000000 /FPS;
-        double delta = 0;
-        long lastTime = System.nanoTime();
-        long currentTime;
-
-        while (gameThread != null) {
-
-            //delta is accumulated and if it reaches 1, it means enough time has passed for the system to repaint again
-            currentTime = System.nanoTime();
-            delta += (currentTime - lastTime) / drawInterval;
-            lastTime = currentTime;
-
-            if (delta > 1) {
-                update();
-                repaint();
-                delta--;
-            }
 
 
-        }
     }
+
 
     public void update() {
         mainPlayer.update();
@@ -82,17 +73,22 @@ public class GUI extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D)g;
 
+        // Render
+        for(Map map : m_maps) if(map.mp_activated) map.RenderMap(g2);
+        m_player.Render(g2);
+
+        /*
         tileM.draw(g2);
         mainPlayer.draw(g2);
 
-        g2.dispose();
+        g2.dispose(); */
     }
 
 
     public static void main(String[] args){
     
         //Booting up the GUI and the JFrame
-        GUI gui = new GUI();
+        Renderer gui = new Renderer();
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);

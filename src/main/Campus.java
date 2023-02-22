@@ -16,8 +16,8 @@ public class Campus extends Const{
     public static Characters[] m_characters;
     public static PlayerOld m_player;
 
-    public static boolean debug = true;
-    public static GUI m_ui;
+    public static boolean debug = false;
+    public static Renderer m_renderer;
     public static JFrame window;
     public static TileManager m_tmanager;
 
@@ -32,8 +32,8 @@ public class Campus extends Const{
 
     public static void Init(String[] args){
 
-        m_ui = new GUI();
-        m_tmanager = new TileManager(m_ui);
+        m_renderer = new Renderer();
+        m_tmanager = new TileManager(m_renderer);
 
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,10 +41,9 @@ public class Campus extends Const{
         window.setTitle("DKU Campus Simulation");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-        window.add(m_ui);
+        window.add(m_renderer);
         window.pack();
-
-
+        
         In config = new In("config.txt");
         String map_data = config.readLine();                    if(debug)System.out.println(map_data);
         String[] map_names = map_data.split(" ", -1);
@@ -73,6 +72,8 @@ public class Campus extends Const{
             m_characters[i] = new Characters(dir, x, y);        if(debug)System.out.println(m_characters[i].p_pos.toString());
         }
 
+        m_renderer.SetData(m_player, m_maps);
+
     }
 
     public static void Update(){
@@ -92,11 +93,6 @@ public class Campus extends Const{
         // State Update
         boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);
         m_player.Update(avail_move);
-
-        // Render
-        for(Map map : m_maps) if(map.mp_activated) map.RenderMap();
-        for(Characters chara : m_characters) chara.Render();
-        m_player.Render();
 
         if(debug){ 
             System.out.println(m_player.p_tar.toString());

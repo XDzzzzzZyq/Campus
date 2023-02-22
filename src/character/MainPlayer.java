@@ -5,15 +5,16 @@ import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
-import main.GUI;
+import main.Renderer;
 import main.KeyHandler;
+import main.vec2;
 
 public class MainPlayer extends Character {
     
-    GUI gui;
+    Renderer gui;
     KeyHandler keyH;
 
-    public MainPlayer(GUI gui, KeyHandler keyH) {
+    public MainPlayer(Renderer gui, KeyHandler keyH) {
         this.gui = gui;
         this.keyH = keyH;
         setDefaultValues();
@@ -98,6 +99,10 @@ public class MainPlayer extends Character {
             break;
         }
         g2.drawImage(image, x, y, gui.tileSize, gui.tileSize, null);
+    }
+
+    public static vec2 getPlayerPos(int x, int y) {
+        return new vec2(x, y);
     }
 
     public void getMainPlayerImage() {

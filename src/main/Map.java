@@ -1,7 +1,10 @@
 package main;
+
 import main.tiles.TileManager;
 import main.tiles.Tiles;
-import main.tiles.Tiles.TileTypes;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Map extends Const{
 
@@ -77,18 +80,18 @@ public class Map extends Const{
         return res;
     }
 
-    public void RenderMap(){
-        RenderMap(new vec2(0, 0), mp_size);
+    public void RenderMap(Graphics2D g2){
+        RenderMap(new vec2(0, 0), mp_size, g2);
     }
 
     /*
      *   Rendering map from a 2d range
      */
 
-    public void RenderMap(vec2 _min, vec2 _max){
+    public void RenderMap(vec2 _min, vec2 _max, Graphics2D g2){
         for(int i = (int)_min.x; i<_max.x; i++){
             for(int j = (int)_min.y; j<_max.y; j++){
-                // HERE
+                g2.drawImage(mp_tiles[i][j].t_image, i*32, j*32, 32, 32, null);
             }
         }
     }

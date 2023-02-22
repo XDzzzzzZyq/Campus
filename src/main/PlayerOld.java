@@ -1,5 +1,8 @@
 package main;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class PlayerOld extends Const {
 
     public vec2 p_pos;      // non-decimal allowed
@@ -61,7 +64,7 @@ public class PlayerOld extends Const {
 
     }
 
-    public void Render(){
+    public void Render(Graphics2D g2){
         switch(p_dir){
             // Left
             case A:

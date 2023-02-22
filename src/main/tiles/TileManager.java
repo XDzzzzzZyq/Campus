@@ -6,12 +6,12 @@ import javax.imageio.ImageIO;
 
 import java.awt.*;
 
-import main.GUI;
+import main.Renderer;
 import main.tiles.Tiles.TileTypes;
 
 public class TileManager {
     
-    GUI gui;
+    Renderer gui;
 
     public static Tiles[] tiles;
 
@@ -26,7 +26,7 @@ public class TileManager {
     TileTypes TILE_TREE = TileTypes.TILE_TREE;
     
     //Constructor 
-    public TileManager(GUI gui) {
+    public TileManager(Renderer gui) {
         this.gui = gui;
 
         tiles = new Tiles[9];
