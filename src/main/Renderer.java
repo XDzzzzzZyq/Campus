@@ -53,7 +53,7 @@ public class Renderer extends JPanel implements Runnable{
     }
 
     public void MoveCamera(){
-        r_camera.slerp(r_player.p_pos, Const.SLERP_RATE/50);
+        r_camera.slerp(r_player.p_pos, Const.SLERP_RATE/10);
     }
 
     public Renderer() {

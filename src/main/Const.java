@@ -7,7 +7,7 @@ public class Const{
     public static final int TILE_SCAL = 32;            // in pixel
 
     public static final int FRAME_RATE = 10;          // 10 frames per second
-    public static final double SLERP_RATE = 0.00001;
+    public static final double SLERP_RATE = 0.000002;
 
     public static final int ANIMA_DURATION = 5;       // each animation will last 5 frames
 

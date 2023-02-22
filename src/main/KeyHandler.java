@@ -22,7 +22,6 @@ public class KeyHandler implements KeyListener{
 
         int code = e.getKeyCode();
         active_move = code;
-
         pressed = true;
     }
 

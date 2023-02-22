@@ -21,7 +21,8 @@ public class Campus extends Const{
     public static PlayerOld m_player;
 
     public static boolean debug = false;
-
+    
+    public static boolean is_clicked;
     public static void main(String[] args){
         Init(args);
         while(Run());
@@ -87,11 +88,15 @@ public class Campus extends Const{
     }
 
     public static void Update(){
-        if(m_renderer.GetKeyInput().active_move == 0) {
-            // interact with blocks
-            if(m_maps[m_activa_map].GetTileTypes(m_player.p_pos) == Tiles.TileTypes.TILE_ENTR){
-                // do something
-            }
+        is_clicked = m_renderer.IsClicked();
+
+        if(
+            is_clicked &&
+            m_renderer.r_keyinp.active_move == E &&
+            m_maps[m_activa_map].GetTileTypes(m_player.p_tar) == TileTypes.TILE_ENTR
+        ){
+            m_activa_map = m_activa_map == 0? 1: 0;
+            m_maps[1].mp_activated = !m_maps[1].mp_activated;
         }
     }
 
@@ -99,9 +104,9 @@ public class Campus extends Const{
 
         // Reset
         m_time.NextFrame();
-
+        Update();
         // State Update
-        if(m_renderer.IsClicked()){
+        if(is_clicked){
             boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);
             //boolean[] avail_move = {true, true, true, true};
             m_player.Update(avail_move);
@@ -109,6 +114,7 @@ public class Campus extends Const{
         m_player.slerp();
         m_renderer.MoveCamera();
         System.out.print("");
+
 
         if(debug){ 
             System.out.println(m_player.p_tar.toString());
