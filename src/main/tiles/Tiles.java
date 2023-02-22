@@ -14,7 +14,8 @@ public class Tiles{
         TILE_GRAS(4, "Gras"), 
         TILE_LAKE(5, "Lake"), 
         TILE_FIEL(6, "Fiel"),
-        TILE_TILE(7, "Tile");
+        TILE_TILE(7, "Tile"),
+        TILE_TREE(8, "Tree");
 
         TileTypes(int _code, String _name){
             this._code = _code;
@@ -36,6 +37,7 @@ public class Tiles{
     public static final TileTypes TILE_FIEL = TileTypes.TILE_FIEL;
     public static final TileTypes TILE_ROOF = TileTypes.TILE_ROOF;
     public static final TileTypes TILE_TILE = TileTypes.TILE_TILE;
+    public static final TileTypes TILE_TREE = TileTypes.TILE_TREE;
 
 
 
@@ -99,6 +101,7 @@ public class Tiles{
             case 5 : return TILE_LAKE;
             case 6 : return TILE_FIEL;
             case 7 : return TILE_TILE;
+            case 8 : return TILE_TREE;
         }
 
         return TILE_NONE;
