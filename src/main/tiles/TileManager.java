@@ -12,13 +12,24 @@ import main.tiles.Tiles.TileTypes;
 public class TileManager {
     
     GUI gui;
+
     public static Tiles[] tiles;
+
+    TileTypes TILE_NONE = TileTypes.TILE_NONE;
+    TileTypes TILE_GRAS = TileTypes.TILE_GRAS;
+    TileTypes TILE_LAKE = TileTypes.TILE_LAKE;
+    TileTypes TILE_ROAD = TileTypes.TILE_ROAD;
+    TileTypes TILE_ENTR = TileTypes.TILE_ENTR;
+    TileTypes TILE_FIEL = TileTypes.TILE_FIEL;
+    TileTypes TILE_ROOF = TileTypes.TILE_ROOF;
+    TileTypes TILE_TILE = TileTypes.TILE_TILE;
+    TileTypes TILE_TREE = TileTypes.TILE_TREE;
     
     //Constructor 
     public TileManager(GUI gui) {
         this.gui = gui;
 
-        tiles = new Tiles[8];
+        tiles = new Tiles[9];
 
         Init();
     }
@@ -52,6 +63,9 @@ public class TileManager {
             tiles[7] = new Tiles(TileTypes.TILE_TILE);
             tiles[7].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tile.png"));
 
+            tiles[8] = new Tiles(TILE_TREE);
+            tiles[8].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tree.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,9 +76,12 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2) {
+
         g2.drawImage(tiles[0].t_image, 0, 0, gui.tileSize, gui.tileSize, null);
-        g2.drawImage(tiles[1].t_image, 48, 0, gui.tileSize, gui.tileSize, null);
-        g2.drawImage(tiles[4].t_image, 96, 0, gui.tileSize, gui.tileSize, null);
+        g2.drawImage(tiles[1].t_image, 64, 0, gui.tileSize, gui.tileSize, null);
+        g2.drawImage(tiles[4].t_image, 128, 0, gui.tileSize, gui.tileSize, null);
+        g2.drawImage(tiles[8].t_image, 0, 64, gui.tileSize, gui.tileSize, null);
+
 
     }
     

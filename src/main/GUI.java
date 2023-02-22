@@ -12,11 +12,11 @@ public class GUI extends JPanel implements Runnable{
     //Screen settings
     final int originalTileSize = 16;
     final int scale = 4;
-    public final int tileSize = originalTileSize * scale; // 16 x 3 = 48x48 pixels per tile
+    public final int tileSize = originalTileSize * scale; // 16 x 4 = 64x64 pixels per tile
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
-    final int screenWidth = maxScreenCol * tileSize; //768 pixels
-    final int screenHeight = maxScreenRow * tileSize; //576 pixels
+    final int screenWidth = maxScreenCol * tileSize; 
+    final int screenHeight = maxScreenRow * tileSize; 
 
     //Game time 
     Thread gameThread;
