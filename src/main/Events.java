@@ -1,3 +1,5 @@
+package main;
+
 import main.tiles.Tiles;
 
 // import main.Tiles.TileTypes;

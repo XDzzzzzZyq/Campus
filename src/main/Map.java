@@ -1,8 +1,11 @@
 package main;
+import main.tiles.TileManager;
 import main.tiles.Tiles;
 import main.tiles.Tiles.TileTypes;
 
 public class Map extends Const{
+
+    private TileManager mp_tmanager;
 
     private Tiles[][] mp_tiles;
     private vec2 mp_offset = new vec2(0, 0);
@@ -15,6 +18,9 @@ public class Map extends Const{
     /*
      *   Reading map from .csv file
      */
+    public Map(TileManager _t){
+        mp_tmanager = _t;
+    }
 
     public void ReadCSV(String _file_name){
         In fp = new In("maps/"+_file_name+".in.csv");
@@ -33,7 +39,7 @@ public class Map extends Const{
             assert line.length == mp_size.x;
 
             for(int j = 0; j < mp_size.x; j++){
-                mp_tiles[j][i] = new Tiles(Tiles.ParseType(Integer.parseInt(line[j])));     
+                mp_tiles[j][i] = mp_tmanager.GetTile(Tiles.ParseType(Integer.parseInt(line[j])));     
             }
         }
     }
@@ -87,7 +93,7 @@ public class Map extends Const{
         }
     }
     public static void main(String[] args){
-        Map testmap = new Map();
+        Map testmap = new Map(null);
 
         testmap.ReadCSV(args[0]);
         testmap.Debug();

@@ -1,6 +1,9 @@
 package main;
+import main.tiles.TileManager;
 import main.tiles.Tiles;
 import main.tiles.Tiles.TileTypes;
+import javax.swing.*;
+import java.awt.*;
 
 public class Campus extends Const{
 
@@ -14,6 +17,9 @@ public class Campus extends Const{
     public static PlayerOld m_player;
 
     public static boolean debug = true;
+    public static GUI m_ui;
+    public static JFrame window;
+    public static TileManager m_tmanager;
 
     public static void main(String[] args){
         Init(args);
@@ -25,13 +31,27 @@ public class Campus extends Const{
     }
 
     public static void Init(String[] args){
+
+        m_ui = new GUI();
+        m_tmanager = new TileManager(m_ui);
+
+        window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("DKU Campus Simulation");
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+        window.add(m_ui);
+        window.pack();
+
+
         In config = new In("config.txt");
         String map_data = config.readLine();                    if(debug)System.out.println(map_data);
         String[] map_names = map_data.split(" ", -1);
 
         m_maps = new Map[map_names.length];                     if(debug)System.out.println(map_names.length);
         for(int i = 0; i<map_names.length; i++){                if(debug)System.out.println(map_names[i]);
-            m_maps[i] = new Map();
+            m_maps[i] = new Map(m_tmanager);
             m_maps[i].ReadCSV(map_names[i]);                    
         }
         m_maps[0].mp_activated = true;
@@ -53,7 +73,6 @@ public class Campus extends Const{
             m_characters[i] = new Characters(dir, x, y);        if(debug)System.out.println(m_characters[i].p_pos.toString());
         }
 
-        StdDraw.disableDoubleBuffering();
     }
 
     public static void Update(){

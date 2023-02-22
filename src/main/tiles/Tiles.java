@@ -46,7 +46,7 @@ public class Tiles{
 
     private TileTypes t_type;
 
-    public BufferedImage image;
+    public BufferedImage t_image;
     public boolean t_walkable = true;
     public boolean t_interactable = false;
 
