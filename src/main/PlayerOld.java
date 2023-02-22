@@ -2,6 +2,8 @@ package main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthEditorPaneUI;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,6 +20,7 @@ public class PlayerOld extends Const {
     private KeyHandler p_keyinp;
 
     public boolean interactable;
+    private int step_count;
 
     static BufferedImage[] p_textures;
 
@@ -63,19 +66,24 @@ public class PlayerOld extends Const {
         if(p_keyinp.active_move==A && avail_move[0]) {
             p_dir = A;
             Move(new vec2(-1, 0));
+            step_count++;
         }
         if(p_keyinp.active_move==W && avail_move[1]) {
             p_dir = W;
             Move(new vec2(0, -1));
+            step_count++;
         }
         if(p_keyinp.active_move==D && avail_move[2]) {
             p_dir = D;
             Move(new vec2(1, 0));
+            step_count++;
         }
         if(p_keyinp.active_move==S && avail_move[3]) {
             p_dir = S;
             Move(new vec2(0, 1));
+            step_count++;
         }
+        if(step_count>=2)step_count=0;
     }
 
     public void slerp(){
@@ -84,7 +92,8 @@ public class PlayerOld extends Const {
 
     public void Render(Graphics2D g2, vec2 camera, boolean centered){
 
-        int offset = 0;
+
+        int offset = step_count;
         int x = centered ? (int)(TILE_SCAL*(16 + p_pos.x - camera.x)) : (int)(p_pos.x*TILE_SCAL);
         int y = centered ? (int)(TILE_SCAL*(9  + p_pos.y - camera.y)) : (int)(p_pos.y*TILE_SCAL);
 
