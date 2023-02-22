@@ -19,21 +19,22 @@ https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
 - To do list:
     - [x] map reading [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>
-    - [ ] map rendering [@Najo0116](https://github.com/Najo0116)
-      - [ ] multi-map rendering [@Najo0116](https://github.com/Najo0116)
+    - [x] map rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - [x] multi-map rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [ ] adaptive details
     <br><br/>  
-    - [ ] character rendering [@Najo0116](https://github.com/Najo0116)
+    - [x] character rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/> 
-    - [x] key-mouse input [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
-      - Using StdDraw?
-      - [ ] player movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
-      - [ ] interaction
+    - [x] key-mouse input [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) 
+      - Using StdDraw? Jframe?
+      - [x] player movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - [x] interaction [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
         - [ ] time related
       - [ ] quit/reset
+      - [ ] bounding detact [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>
-    - [ ] animation
-      - [ ] ease in / ease out [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
-      - [ ] smooth camera movement
+    - [x] animation
+      - [x] ease in / ease out [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - [x] smooth camera movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
   
-    - [ ] Textures [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) [@seanpushu](https://github.com/seanpushu)
+    - [x] Textures [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) [@seanpushu](https://github.com/seanpushu)
