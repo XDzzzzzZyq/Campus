@@ -26,15 +26,17 @@ https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
     - [x] character rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/> 
     - [x] key-mouse input [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) 
-      - Using StdDraw? Jframe?
+      - Jframe [@Najo0116](https://github.com/Najo0116)
       - [x] player movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [x] interaction [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
         - [ ] time related
       - [ ] quit/reset
-      - [ ] bounding detact [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - [x] bounding detact [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>
     - [x] animation
       - [x] ease in / ease out [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [x] smooth camera movement [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
+      - [x] step animation [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
   
     - [x] Textures [@XDzzzzzZyq](https://github.com/XDzzzzzZyq) [@seanpushu](https://github.com/seanpushu)
+    - [x] Player textures [@Najo0116](https://github.com/Najo0116)
