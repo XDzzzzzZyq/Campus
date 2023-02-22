@@ -13,14 +13,14 @@ public class Campus extends Const{
     public static Characters[] m_characters;
     public static PlayerOld m_player;
 
-    public static boolean debug = false;
+    public static boolean debug = true;
 
     public static void main(String[] args){
-      //  Init(args);
-      //  while(Run());
-      //  Terminate();
+        Init(args);
+        while(Run());
+        Terminate();
 
-        new GUI();
+        //new GUI();
 
     }
 
