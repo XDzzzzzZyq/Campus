@@ -1,3 +1,4 @@
+package main;
 public class Timer extends Const{
 
     private int tm_time = 0;

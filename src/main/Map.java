@@ -1,3 +1,7 @@
+package main;
+import main.tiles.Tiles;
+import main.tiles.Tiles.TileTypes;
+
 public class Map extends Const{
 
     private Tiles[][] mp_tiles;

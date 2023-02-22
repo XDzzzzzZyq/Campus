@@ -1,4 +1,6 @@
-public class Player extends Const {
+package main;
+
+public class PlayerOld extends Const {
 
     public vec2 p_pos;      // non-decimal allowed
     public vec2 p_tar;      // only decimal
@@ -6,7 +8,7 @@ public class Player extends Const {
 
     public boolean interactable;
 
-    public Player(int x, int y){
+    public PlayerOld(int x, int y){
         p_tar = new vec2(x, y);
         p_pos = new vec2(x, y);
     }

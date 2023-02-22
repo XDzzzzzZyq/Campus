@@ -1,21 +1,27 @@
+package main;
+import main.tiles.Tiles;
+import main.tiles.Tiles.TileTypes;
+
 public class Campus extends Const{
 
     public static Map[] m_maps;
     public static int m_activa_map = 0;
 
-    public static GUI m_GUI;
 
     public static Timer m_time;
 
     public static Characters[] m_characters;
-    public static Player m_player;
+    public static PlayerOld m_player;
 
     public static boolean debug = true;
 
     public static void main(String[] args){
-        Init(args);
-        while(Run());
-        Terminate();
+      //  Init(args);
+      //  while(Run());
+      //  Terminate();
+
+        new GUI();
+
     }
 
     public static void Init(String[] args){
@@ -34,7 +40,7 @@ public class Campus extends Const{
         m_time = new Timer();
         m_time.TimeReset(defult_time);
         String[] player_pos = config.readLine().split(" ", -1);     if(debug)System.out.println(player_pos[0]);
-        m_player = new Player(Integer.parseInt(player_pos[0]), Integer.parseInt(player_pos[1]));
+        m_player = new PlayerOld(Integer.parseInt(player_pos[0]), Integer.parseInt(player_pos[1]));
 
         int character_counts = Integer.parseInt(config.readLine());        if(debug)System.out.println(character_counts);
         m_characters = new Characters[character_counts];

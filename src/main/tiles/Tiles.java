@@ -1,3 +1,5 @@
+package main.tiles;
+import java.awt.image.BufferedImage;
 public class Tiles{
 
     /*
@@ -11,7 +13,8 @@ public class Tiles{
         TILE_ENTR(3, "Entr"),
         TILE_GRAS(4, "Gras"), 
         TILE_LAKE(5, "Lake"), 
-        TILE_FIEL(6, "Fiel");
+        TILE_FIEL(6, "Fiel"),
+        TILE_TILE(7, "Tile");
 
         TileTypes(int _code, String _name){
             this._code = _code;
@@ -32,27 +35,32 @@ public class Tiles{
     public static final TileTypes TILE_ENTR = TileTypes.TILE_ENTR;
     public static final TileTypes TILE_FIEL = TileTypes.TILE_FIEL;
     public static final TileTypes TILE_ROOF = TileTypes.TILE_ROOF;
+    public static final TileTypes TILE_TILE = TileTypes.TILE_TILE;
+
 
 
     /*
      *  Instance variables & methods
      */
 
+
     private TileTypes t_type;
 
+    public BufferedImage image;
     public boolean t_walkable = true;
     public boolean t_interactable = false;
 
-    public Events t_event = null;
+    //public Events t_event = null;
 
     public void RenderTile(){
 
     }
-
+    /* event functions causing problems in testing
     public void OnEvent(){
         if(t_interactable) t_event.OnEvent(t_type);
 
     }
+    */
 
     public TileTypes GetType(){
         return t_type;
@@ -90,6 +98,7 @@ public class Tiles{
             case 4 : return TILE_GRAS;
             case 5 : return TILE_LAKE;
             case 6 : return TILE_FIEL;
+            case 7 : return TILE_TILE;
         }
 
         return TILE_NONE;

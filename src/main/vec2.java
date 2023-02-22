@@ -1,3 +1,4 @@
+package main;
 //package BK1;
 
 public class vec2{

@@ -1,3 +1,4 @@
+package main;
 public class Const{
 
     public static final int TIME_INTERVAL = 10 ;      // 10 minutes per frame

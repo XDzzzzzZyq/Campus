@@ -1,3 +1,4 @@
+package main;
 public class Characters extends Const{
 
     public vec2 p_pos;      // only decimal allowed
