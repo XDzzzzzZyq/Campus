@@ -4,12 +4,16 @@ import main.tiles.Tiles;
 import main.tiles.Tiles.TileTypes;
 import javax.swing.*;
 import java.awt.*;
+import java.time.format.FormatStyle;
 
 public class Campus extends Const{
 
+    public static Renderer m_renderer;
+    public static JFrame m_window;
+    public static TileManager m_tmanager;
+
     public static Map[] m_maps;
     public static int m_activa_map = 0;
-
 
     public static Timer m_time;
 
@@ -17,9 +21,6 @@ public class Campus extends Const{
     public static PlayerOld m_player;
 
     public static boolean debug = false;
-    public static Renderer m_renderer;
-    public static JFrame window;
-    public static TileManager m_tmanager;
 
     public static void main(String[] args){
         Init(args);
@@ -35,14 +36,14 @@ public class Campus extends Const{
         m_renderer = new Renderer();
         m_tmanager = new TileManager(m_renderer);
 
-        window = new JFrame();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setTitle("DKU Campus Simulation");
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-        window.add(m_renderer);
-        window.pack();
+        m_window = new JFrame();
+        m_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        m_window.setResizable(false);
+        m_window.setSize(960, 540);
+        m_window.setTitle("DKU Campus Simulation");
+        m_window.setLocationRelativeTo(null);
+        m_window.setVisible(true);
+        m_window.requestFocusInWindow();
         
         In config = new In("config.txt");
         String map_data = config.readLine();                    if(debug)System.out.println(map_data);
@@ -59,7 +60,7 @@ public class Campus extends Const{
         m_time = new Timer();
         m_time.TimeReset(defult_time);
         String[] player_pos = config.readLine().split(" ", -1);     if(debug)System.out.println(player_pos[0]);
-        m_player = new PlayerOld(Integer.parseInt(player_pos[0]), Integer.parseInt(player_pos[1]));
+        m_player = new PlayerOld(Integer.parseInt(player_pos[0]), Integer.parseInt(player_pos[1]), m_renderer.GetKeyInput());
 
         int character_counts = Integer.parseInt(config.readLine());        if(debug)System.out.println(character_counts);
         m_characters = new Characters[character_counts];
@@ -73,11 +74,13 @@ public class Campus extends Const{
         }
 
         m_renderer.SetData(m_player, m_maps);
-
+        m_window.addKeyListener(m_renderer.GetKeyInput());
+        m_window.add(m_renderer);
+        m_window.show();
     }
 
     public static void Update(){
-        if(StdDraw.isKeyPressed(E)) {
+        if(m_renderer.GetKeyInput().active_move == 0) {
             // interact with blocks
             if(m_maps[m_activa_map].GetTileTypes(m_player.p_pos) == Tiles.TileTypes.TILE_ENTR){
                 // do something
@@ -91,15 +94,17 @@ public class Campus extends Const{
         m_time.NextFrame();
 
         // State Update
-        boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);
-        m_player.Update(avail_move);
+        if(m_renderer.IsClicked()){
+            boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);
+            //boolean[] avail_move = {true, true, true, true};
+            m_player.Update(avail_move);
+        } 
+        System.out.print("");
 
         if(debug){ 
             System.out.println(m_player.p_tar.toString());
             System.out.println(m_maps[m_activa_map].GetTileTypes(m_player.p_tar).GetName());
         }
-        StdDraw.pause(30);
-        StdDraw.show();
 
         return true;
     }

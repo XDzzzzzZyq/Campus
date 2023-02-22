@@ -1,49 +1,49 @@
 package main;
 import java.awt.event.*;
 
+import javax.swing.UIDefaults.ActiveValue;
+
 public class KeyHandler implements KeyListener{
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean pressed, pressed_b;
+    public int active_move = -1;
 
     // Key typed will not be used for the purposes of the campus game
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
+    public boolean IsClicked(){
+        return (pressed == true) && (pressed_b == false);
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
+
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_W) {
-            upPressed = true;
-        }
-        if (code == KeyEvent.VK_A) {
-            leftPressed = true;
-        }
-        if (code == KeyEvent.VK_S) {
-            downPressed = true;
-        }
-        if (code == KeyEvent.VK_D) {
-            rightPressed = true;
-        }
+        active_move = code;
+
+        pressed = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
-            upPressed = false;
+            //upPressed = false;
         }
         if (code == KeyEvent.VK_A) {
-            leftPressed = false;
+            //leftPressed = false;
         }
         if (code == KeyEvent.VK_S) {
-            downPressed = false;
+            //downPressed = false;
         }
         if (code == KeyEvent.VK_D) {
-            rightPressed = false;
+            //rightPressed = false;
         }
+
+        pressed = false;
     }
     
 }

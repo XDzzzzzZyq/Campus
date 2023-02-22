@@ -2,6 +2,9 @@ package main;
 
 import main.tiles.TileManager;
 import main.tiles.Tiles;
+import main.tiles.Tiles.TileTypes;
+
+import main.Const.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,6 +80,7 @@ public class Map extends Const{
         res[2] = CheckBlock(local_x + 1, local_y    );   // right
         res[3] = CheckBlock(local_x    , local_y + 1);   // down
 
+        //System.out.print(local_pos.toString());
         return res;
     }
 
@@ -91,7 +95,8 @@ public class Map extends Const{
     public void RenderMap(vec2 _min, vec2 _max, Graphics2D g2){
         for(int i = (int)_min.x; i<_max.x; i++){
             for(int j = (int)_min.y; j<_max.y; j++){
-                g2.drawImage(mp_tiles[i][j].t_image, i*32, j*32, 32, 32, null);
+                if(mp_tiles[i][j].GetType()==TileTypes.TILE_NONE) continue;
+                g2.drawImage(mp_tiles[i][j].t_image, (int)(mp_offset.x+i)*TILE_SCAL, (int)(mp_offset.y+j)*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
             }
         }
     }

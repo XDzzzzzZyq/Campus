@@ -29,21 +29,21 @@ public class MainPlayer extends Character {
     }
     public void update () {
 
-        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+        if (keyH.active_move == 1 || keyH.active_move == 1|| keyH.active_move == 1|| keyH.active_move == 1) {
 
-        if (keyH.upPressed == true) {
+        if (keyH.active_move == 1) {
             direction = "up";
             y -= speed;
         }
-        else if (keyH.leftPressed == true) {
+        else if (keyH.active_move == 1) {
             direction = "left";
             x -= speed;
         }
-        else if (keyH.downPressed == true) {
+        else if (keyH.active_move == 1) {
             direction = "down";
             y += speed;
         }
-        else if (keyH.rightPressed == true) {
+        else if (keyH.active_move == 1) {
             direction = "right";
             x += speed;
         }

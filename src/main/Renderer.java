@@ -7,7 +7,6 @@ import character.MainPlayer;
 import main.tiles.TileManager;
 
 
-
 public class Renderer extends JPanel implements Runnable{
 
     //Screen settings
@@ -20,25 +19,34 @@ public class Renderer extends JPanel implements Runnable{
     final int screenHeight = maxScreenRow * tileSize; 
 
     //Game time 
-    Thread gameThread;
-    int FPS = 60;
+    public Thread gameThread;
+    public int FPS = 60;
 
     //Keyboard listener
-    KeyHandler keyH = new KeyHandler();
+    public KeyHandler r_keyinp;
 
     //Player object 
-    MainPlayer mainPlayer = new MainPlayer(this, keyH);
+    public MainPlayer mainPlayer = new MainPlayer(this, r_keyinp);
 
     //Tile manager
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
 
-    PlayerOld m_player;
-    Map m_maps[];
+    public PlayerOld r_player;
+    public Map r_maps[];
+
+    public boolean clicked;
+
+    public boolean IsClicked(){
+
+        boolean ret = clicked;
+        clicked = false;
+        return ret;
+    }
 
     public Renderer() {
-
+        r_keyinp = new KeyHandler();
         //Game panel
-        this.addKeyListener(keyH);
+        this.addKeyListener(r_keyinp);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.lightGray);
         this.setDoubleBuffered(true);
@@ -53,35 +61,50 @@ public class Renderer extends JPanel implements Runnable{
     }
 
     public void SetData(PlayerOld pl, Map[] m){
-        m_player = pl;
-        m_maps = m;
+        r_player = pl;
+        r_maps = m;
     }
 
     @Override
     public void run() {
 
+        while (gameThread != null) {
+            repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
     }
+
+    public KeyHandler GetKeyInput(){ return r_keyinp; }
 
 
     public void update() {
-        mainPlayer.update();
+        //mainPlayer.update();
+
     }
 
     public void paintComponent(Graphics g) {
+        //if(true)System.out.println(r_keyinp.IsClicked());
+        if(!clicked) clicked = r_keyinp.IsClicked();
+        r_keyinp.pressed_b = r_keyinp.pressed;
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D)g;
 
         // Render
-        for(Map map : m_maps) if(map.mp_activated) map.RenderMap(g2);
-        m_player.Render(g2);
-
-        /*
-        tileM.draw(g2);
-        mainPlayer.draw(g2);
-
-        g2.dispose(); */
+        if ( r_maps==null || r_player == null){
+            tileM.draw(g2);
+            mainPlayer.draw(g2);
+            g2.dispose(); 
+        }else{
+            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(g2);
+            r_player.Render(g2);
+            g2.dispose(); 
+        }
     }
 
 
@@ -97,7 +120,6 @@ public class Renderer extends JPanel implements Runnable{
         window.setVisible(true);
         window.add(gui);
         window.pack();
-        
         
     }
 
