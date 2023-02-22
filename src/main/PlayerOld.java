@@ -79,14 +79,14 @@ public class PlayerOld extends Const {
     }
 
     public void slerp(){
-        p_pos.slerp(p_tar, 0.00001);
+        p_pos.slerp(p_tar, SLERP_RATE);
     }
 
-    public void Render(Graphics2D g2, boolean center){
+    public void Render(Graphics2D g2, vec2 camera, boolean centered){
 
         int offset = 0;
-        int x = center?TILE_SCAL*16:(int)(p_pos.x*TILE_SCAL);
-        int y = center?TILE_SCAL*9 :(int)(p_pos.y*TILE_SCAL);
+        int x = centered ? (int)(TILE_SCAL*(16 + p_pos.x - camera.x)) : (int)(p_pos.x*TILE_SCAL);
+        int y = centered ? (int)(TILE_SCAL*(9  + p_pos.y - camera.y)) : (int)(p_pos.y*TILE_SCAL);
 
         switch(p_dir){
             // Left

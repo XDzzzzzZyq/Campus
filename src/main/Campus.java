@@ -60,7 +60,12 @@ public class Campus extends Const{
         m_time = new Timer();
         m_time.TimeReset(defult_time);
         String[] player_pos = config.readLine().split(" ", -1);     if(debug)System.out.println(player_pos[0]);
-        m_player = new PlayerOld(Integer.parseInt(player_pos[0]), Integer.parseInt(player_pos[1]), m_renderer.GetKeyInput());
+
+        int ini_x = Integer.parseInt(player_pos[0]);
+        int ini_y = Integer.parseInt(player_pos[1]);
+
+        m_player = new PlayerOld(ini_x, ini_y, m_renderer.GetKeyInput());
+        m_renderer.SetCamera(ini_x, ini_y);
 
         int character_counts = Integer.parseInt(config.readLine());        if(debug)System.out.println(character_counts);
         m_characters = new Characters[character_counts];
@@ -77,6 +82,8 @@ public class Campus extends Const{
         m_window.addKeyListener(m_renderer.GetKeyInput());
         m_window.add(m_renderer);
         m_window.show();
+
+        System.out.println(m_player.p_pos.toString());
     }
 
     public static void Update(){
@@ -100,6 +107,7 @@ public class Campus extends Const{
             m_player.Update(avail_move);
         } 
         m_player.slerp();
+        m_renderer.MoveCamera();
         System.out.print("");
 
         if(debug){ 

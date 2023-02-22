@@ -6,6 +6,8 @@ import java.awt.*;
 import character.MainPlayer;
 import main.tiles.TileManager;
 
+import main.Const.*;
+
 
 public class Renderer extends JPanel implements Runnable{
 
@@ -37,12 +39,21 @@ public class Renderer extends JPanel implements Runnable{
     public boolean clicked;
 
     private vec2 r_range = new vec2(16, 9);
+    private vec2 r_camera;
 
     public boolean IsClicked(){
 
         boolean ret = clicked;
         clicked = false;
         return ret;
+    }
+
+    public void SetCamera(int x, int y){
+        r_camera = new vec2(x, y); 
+    }
+
+    public void MoveCamera(){
+        r_camera.slerp(r_player.p_pos, Const.SLERP_RATE/50);
     }
 
     public Renderer() {
@@ -103,11 +114,11 @@ public class Renderer extends JPanel implements Runnable{
             mainPlayer.draw(g2);
             g2.dispose(); 
         }else{
-            vec2 range_min = vec2.subtract(r_player.p_tar, r_range);
-            vec2 range_max = vec2.add(r_player.p_tar, r_range);
+            vec2 range_min = vec2.subtract(r_camera, r_range);
+            vec2 range_max = vec2.add(r_camera, r_range);
 
-            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(range_min, range_max, g2);
-            r_player.Render(g2, false);
+            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(range_min, range_max, g2, true);
+            r_player.Render(g2, r_camera, true);
 
             g2.dispose(); 
         }
