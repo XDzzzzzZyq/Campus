@@ -38,8 +38,10 @@ public class Renderer extends JPanel implements Runnable{
 
     public boolean clicked;
 
-    private vec2 r_range = new vec2(16, 9);
     private vec2 r_camera;
+
+    private double animation = 0.0;
+    private boolean inversed = true;
 
     public boolean IsClicked(){
 
@@ -54,6 +56,17 @@ public class Renderer extends JPanel implements Runnable{
 
     public void MoveCamera(){
         r_camera.slerp(r_player.p_pos, Const.SLERP_RATE/10);
+    }
+
+    public void InvertAnime(){
+        inversed = !inversed;
+    }
+
+    public double GetAnimeF(){
+        double f = animation;
+        f = f-0.5;
+        f*=Math.PI;
+        return Math.sin(f)/2+0.5;
     }
 
     public Renderer() {
@@ -96,8 +109,14 @@ public class Renderer extends JPanel implements Runnable{
     public KeyHandler GetKeyInput(){ return r_keyinp; }
 
 
-    public void update() {
-        //mainPlayer.update();
+    public void Update() {
+        if(inversed){
+            if(animation>0)animation-=Const.ANIME_SPEED;
+            if(animation<=0) animation = 0;
+        }else{
+            if(animation<1)animation+=Const.ANIME_SPEED;
+            if(animation>=1) animation = 1;
+        }
 
     }
 
@@ -114,10 +133,7 @@ public class Renderer extends JPanel implements Runnable{
             mainPlayer.draw(g2);
             g2.dispose(); 
         }else{
-            vec2 range_min = vec2.subtract(r_camera, r_range);
-            vec2 range_max = vec2.add(r_camera, r_range);
-
-            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(range_min, range_max, g2, true);
+            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(r_camera, GetAnimeF(), g2, true);
             r_player.Render(g2, r_camera, true);
 
             g2.dispose(); 

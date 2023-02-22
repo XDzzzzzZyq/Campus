@@ -96,7 +96,8 @@ public class Campus extends Const{
             m_maps[m_activa_map].GetTileTypes(m_player.p_tar) == TileTypes.TILE_ENTR
         ){
             m_activa_map = m_activa_map == 0? 1: 0;
-            m_maps[1].mp_activated = !m_maps[1].mp_activated;
+            m_maps[1].mp_activated = true;
+            m_renderer.InvertAnime();
         }
     }
 
@@ -105,6 +106,7 @@ public class Campus extends Const{
         // Reset
         m_time.NextFrame();
         Update();
+        m_renderer.Update();
         // State Update
         if(is_clicked){
             boolean[] avail_move = m_maps[m_activa_map].CheckAvailMove(m_player.p_tar);

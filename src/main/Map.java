@@ -21,6 +21,8 @@ public class Map extends Const{
 
     public boolean mp_activated;
 
+    private static final vec2 cam_range = new vec2(16, 9);
+
     /*
      *   Reading map from .csv file
      */
@@ -38,7 +40,7 @@ public class Map extends Const{
         mp_offset = new vec2(Integer.parseInt(map_info[3]), Integer.parseInt(map_info[4]));
 
         mp_tiles = new Tiles[(int)mp_size.x][(int)mp_size.y];
-        mp_name = map_info[0];
+        mp_name = _file_name;
 
         for(int i = 0; i < mp_size.y; i++){
             String[] line = fp.readLine().split(",", -1);
@@ -85,17 +87,17 @@ public class Map extends Const{
     }
 
     public void RenderMap(Graphics2D g2){
-        RenderMap(new vec2(0, 0), mp_size, g2, false);
+        RenderMap(vec2.scale(mp_size, 0.5), 1, g2, false);
     }
 
     /*
      *   Rendering map from a 2d range
      */
 
-    public void RenderMap(vec2 _min, vec2 _max, Graphics2D g2, boolean centered){
+    public void RenderMap(vec2 camera, double anime, Graphics2D g2, boolean centered){
 
-        vec2 local_min = vec2.subtract(_min, mp_offset);
-        vec2 local_max = vec2.subtract(_max, mp_offset);
+        vec2 local_min = vec2.subtract(vec2.subtract(camera, cam_range), mp_offset);
+        vec2 local_max = vec2.subtract(vec2.add     (camera, cam_range), mp_offset);
         vec2 center = vec2.scale(vec2.add(local_min, local_max), 0.5);
 
         for(int i = (int)local_min.x; i<local_max.x; i++){
@@ -111,8 +113,15 @@ public class Map extends Const{
                     x += (16-mp_offset.x -center.x)*TILE_SCAL;
                     y += ( 9-mp_offset.y -center.y)*TILE_SCAL;
                 }
+                if(!mp_name.equals("main")){
+                    x += (int)((0.5*(1-anime))*TILE_SCAL);
+                    y += (int)((0.5*(1-anime))*TILE_SCAL);
+                }
+                //double fact = Math.pow(1.00001, -vec2.dist(new vec2(x, y), center));
+                //anime = anime*fact + (Math.pow(2, fact)-1)*(1-fact);
 
-                g2.drawImage(mp_tiles[i][j].t_image, x, y, TILE_SCAL, TILE_SCAL, null);
+                int size = mp_name.equals("main")?TILE_SCAL:(int)(TILE_SCAL*anime);
+                g2.drawImage(mp_tiles[i][j].t_image, x, y, size, size, null);
             }
         }
     }

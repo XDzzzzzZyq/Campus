@@ -8,6 +8,7 @@ public class Const{
 
     public static final int FRAME_RATE = 10;          // 10 frames per second
     public static final double SLERP_RATE = 0.000002;
+    public static final double ANIME_SPEED = 0.0000005;
 
     public static final int ANIMA_DURATION = 5;       // each animation will last 5 frames
 
