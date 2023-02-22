@@ -36,6 +36,8 @@ public class Renderer extends JPanel implements Runnable{
 
     public boolean clicked;
 
+    private vec2 r_range = new vec2(16, 9);
+
     public boolean IsClicked(){
 
         boolean ret = clicked;
@@ -101,8 +103,12 @@ public class Renderer extends JPanel implements Runnable{
             mainPlayer.draw(g2);
             g2.dispose(); 
         }else{
-            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(g2);
-            r_player.Render(g2);
+            vec2 range_min = vec2.subtract(r_player.p_tar, r_range);
+            vec2 range_max = vec2.add(r_player.p_tar, r_range);
+
+            for(Map map : r_maps) if(map.mp_activated) map.RenderMap(range_min, range_max, g2);
+            r_player.Render(g2, false);
+
             g2.dispose(); 
         }
     }

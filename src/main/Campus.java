@@ -39,7 +39,7 @@ public class Campus extends Const{
         m_window = new JFrame();
         m_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         m_window.setResizable(false);
-        m_window.setSize(960, 540);
+        m_window.setSize(TILE_SCAL*32, TILE_SCAL*18);
         m_window.setTitle("DKU Campus Simulation");
         m_window.setLocationRelativeTo(null);
         m_window.setVisible(true);
@@ -99,6 +99,7 @@ public class Campus extends Const{
             //boolean[] avail_move = {true, true, true, true};
             m_player.Update(avail_move);
         } 
+        m_player.slerp();
         System.out.print("");
 
         if(debug){ 

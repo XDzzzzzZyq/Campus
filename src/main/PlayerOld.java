@@ -76,34 +76,37 @@ public class PlayerOld extends Const {
             p_dir = S;
             Move(new vec2(0, 1));
         }
-
-        p_pos.slerp(p_tar, 0.1);
-
     }
 
-    public void Render(Graphics2D g2){
+    public void slerp(){
+        p_pos.slerp(p_tar, 0.00001);
+    }
+
+    public void Render(Graphics2D g2, boolean center){
 
         int offset = 0;
+        int x = center?TILE_SCAL*16:(int)(p_pos.x*TILE_SCAL);
+        int y = center?TILE_SCAL*9 :(int)(p_pos.y*TILE_SCAL);
 
         switch(p_dir){
             // Left
             case A:
-            g2.drawImage(p_textures[0+offset], (int)p_tar.x*TILE_SCAL, (int)p_tar.y*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
+            g2.drawImage(p_textures[0+offset], x, y, TILE_SCAL, TILE_SCAL, null);
 
             break;
             // Up
             case W:
-            g2.drawImage(p_textures[2+offset], (int)p_tar.x*TILE_SCAL, (int)p_tar.y*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
+            g2.drawImage(p_textures[2+offset], x, y, TILE_SCAL, TILE_SCAL, null);
 
             break;
             // Right
             case D:
-            g2.drawImage(p_textures[4+offset], (int)p_tar.x*TILE_SCAL, (int)p_tar.y*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
+            g2.drawImage(p_textures[4+offset], x, y, TILE_SCAL, TILE_SCAL, null);
 
             break;
             // Down
             case S:
-            g2.drawImage(p_textures[6+offset], (int)p_tar.x*TILE_SCAL, (int)p_tar.y*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
+            g2.drawImage(p_textures[6+offset], x, y, TILE_SCAL, TILE_SCAL, null);
 
 
             break;

@@ -80,7 +80,7 @@ public class Map extends Const{
         res[2] = CheckBlock(local_x + 1, local_y    );   // right
         res[3] = CheckBlock(local_x    , local_y + 1);   // down
 
-        //System.out.print(local_pos.toString());
+        //System.out.print(local_pos.toString())
         return res;
     }
 
@@ -93,10 +93,21 @@ public class Map extends Const{
      */
 
     public void RenderMap(vec2 _min, vec2 _max, Graphics2D g2){
-        for(int i = (int)_min.x; i<_max.x; i++){
-            for(int j = (int)_min.y; j<_max.y; j++){
+
+        vec2 local_min = vec2.subtract(_min, mp_offset);
+        vec2 local_max = vec2.subtract(_max, mp_offset);
+        vec2 center = vec2.scale(vec2.add(local_min, local_max), 0.5);
+
+        for(int i = (int)local_min.x; i<local_max.x; i++){
+            if(i<0) continue;
+            for(int j = (int)local_min.y; j<local_max.y; j++){
+                if(j<0) continue;
                 if(mp_tiles[i][j].GetType()==TileTypes.TILE_NONE) continue;
-                g2.drawImage(mp_tiles[i][j].t_image, (int)(mp_offset.x+i)*TILE_SCAL, (int)(mp_offset.y+j)*TILE_SCAL, TILE_SCAL, TILE_SCAL, null);
+
+                int x = (int)(i+mp_offset.x)*TILE_SCAL;
+                int y = (int)(j+mp_offset.y)*TILE_SCAL;
+
+                g2.drawImage(mp_tiles[i][j].t_image, x, y, TILE_SCAL, TILE_SCAL, null);
             }
         }
     }

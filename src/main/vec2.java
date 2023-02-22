@@ -120,6 +120,14 @@ public class vec2{
         }
     }
 
+    public void clamp2d(vec2 min, vec2 max){
+        if(x<min.x) x=min.x;
+        if(y<min.y) x=min.y;  
+
+        if(x>max.x) x=max.x;
+        if(y>max.y) x=max.y;
+    }
+
     public void smooth_clamp(double min, double max, double t){
         double speed = length(this);
         if(speed<min){
