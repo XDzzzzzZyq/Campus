@@ -1,6 +1,7 @@
 package main.tiles;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -13,7 +14,10 @@ public class TileManager {
     
     Renderer gui;
 
+    public static Random t_random = new Random();
     public static Tiles[] tiles;
+    public static int[] Rd_Gras = {4, 9, 10};
+    public static int[] Rd_Tree = {8, 11, 12};
 
     TileTypes TILE_NONE = TileTypes.TILE_NONE;
     TileTypes TILE_GRAS = TileTypes.TILE_GRAS;
@@ -29,7 +33,7 @@ public class TileManager {
     public TileManager(Renderer gui) {
         this.gui = gui;
 
-        tiles = new Tiles[9];
+        tiles = new Tiles[13];
 
         Init();
     }
@@ -52,7 +56,7 @@ public class TileManager {
             tiles[3].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Entr.png"));
 
             tiles[4] = new Tiles(TileTypes.TILE_GRAS);
-            tiles[4].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Gras.png"));
+            tiles[4].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Gras0.png"));
 
             tiles[5] = new Tiles(TileTypes.TILE_LAKE);
             tiles[5].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Lake.png"));
@@ -64,7 +68,19 @@ public class TileManager {
             tiles[7].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tile.png"));
 
             tiles[8] = new Tiles(TILE_TREE);
-            tiles[8].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tree.png"));
+            tiles[8].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tree0.png"));
+
+            tiles[9] = new Tiles(TileTypes.TILE_GRAS);
+            tiles[9].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Gras1.png"));
+
+            tiles[10] = new Tiles(TileTypes.TILE_GRAS);
+            tiles[10].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Gras2.png"));
+
+            tiles[11] = new Tiles(TileTypes.TILE_TREE);
+            tiles[11].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tree1.png"));
+
+            tiles[12] = new Tiles(TileTypes.TILE_TREE);
+            tiles[12].t_image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/Tree2.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,7 +88,16 @@ public class TileManager {
     }
 
     public Tiles GetTile(TileTypes _type){
-        return tiles[_type.GetCode()];
+        int code = _type.GetCode();
+        if(code == 4){
+            int ind =t_random.nextInt(3);
+            code = Rd_Gras[ind];
+        }else if(code == 8){
+            int ind =t_random.nextInt(3);
+            code = Rd_Tree[ind];
+        }
+
+        return tiles[code];
     }
 
     public void draw(Graphics2D g2) {

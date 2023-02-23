@@ -1,5 +1,6 @@
 package main.tiles;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 public class Tiles{
 
     /*
@@ -44,7 +45,6 @@ public class Tiles{
     /*
      *  Instance variables & methods
      */
-
 
     private TileTypes t_type;
 
