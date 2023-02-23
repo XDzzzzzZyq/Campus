@@ -2,10 +2,15 @@
 CS201 BK project #2  
 
 https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
+
+### press W A S D to move
+![image](https://user-images.githubusercontent.com/81028185/220802233-1009e87f-0f71-40b1-8866-138625c22508.png)
+
+### press E to enter to the buildings
+![image](https://user-images.githubusercontent.com/81028185/220802284-daf894ba-fca9-4d95-ac44-8bf8228a9f32.png)
+
    
-### Reminder for development
-- this reminder should be delete after release   
-    <br><br/>
+## notes
 - the smallest unit of position is 1m
     - the block of each tile is 1m*1m
     - the offset of map ```mp_offset``` represents the offset in tiles and also equals to the offest in meters
@@ -16,12 +21,14 @@ https://whimsical.com/campus-UcuTaLE2NjuLUw6qSfXNG1
     - the positions of player and npcs are also in meters, so there should not be decimals
       - but as for the animations, ```p_pos``` may allows non-integer position exists temporarily   
     <br><br/>
+## development contributions
 - To do list:
     - [x] map reading [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>
     - [x] map rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [x] multi-map rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
       - [ ] adaptive details
+      - [x] random details [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/>  
     - [x] character rendering [@Najo0116](https://github.com/Najo0116) [@XDzzzzzZyq](https://github.com/XDzzzzzZyq)
     <br><br/> 
